@@ -110,7 +110,7 @@ class HistoricalData:
         self.get_super_trend()
 
         name = self.get_name(self.figi)  # Имя итогового csv файла будет совпадать с именем акции
-        self.df.to_csv(f'data/{name.lower()}_data.csv')  # Сохраняем итоговый DF в csv файл
+        self.df.to_csv(f'data/{name.lower()}_data.csv', index=False)  # Сохраняем итоговый DF в csv файл
 
 
 lukoil = HistoricalData('BBG004731032')

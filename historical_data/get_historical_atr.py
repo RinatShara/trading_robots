@@ -7,4 +7,4 @@ atr = average_true_range(high=df['Максимум'], low=df['Минимум'], 
                          window=10)
 df = pd.DataFrame({'ATR': atr, 'Date': df['Время']})
 
-df.to_csv('lukoil/lukoil_atr.csv')
+df.to_csv('lukoil/lukoil_atr.csv', index=False)

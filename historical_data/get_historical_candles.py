@@ -62,4 +62,4 @@ with Client(ro_token) as client:
             df = pd.concat([df, df1], axis=0)
         sleep(45.0)
 
-df.to_csv('surgut/surgut_candles.csv')
+df.to_csv('surgut/surgut_candles.csv', index=False)

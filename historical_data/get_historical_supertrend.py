@@ -7,7 +7,7 @@ super_trend = pd_ta.supertrend(close=df_candles["Цена закрытия"], hi
                                low=df_candles['Минимум'],
                                length=10, multiplier=1.5)
 super_trend = pd.DataFrame({'SuperTrend': super_trend['SUPERT_10_1.5'], 'Цвет': super_trend['SUPERTd_10_1.5']})
-super_trend.to_csv('surgut/surgut_super_trend.csv')
+super_trend.to_csv('surgut/surgut_super_trend.csv', index=False)
 
 # import csv
 # import pandas as pd
@@ -65,4 +65,4 @@ super_trend.to_csv('surgut/surgut_super_trend.csv')
 #         color.append('Красный')
 #
 # df = pd.DataFrame({'SuperTrend': pd.Series(supertrend), 'Цвет': pd.Series(color), 'Время': pd.Series(date)})
-# df.to_csv('lukoil/lukoil_supertrend.csv')
+# df.to_csv('lukoil/lukoil_supertrend.csv', index=False)
