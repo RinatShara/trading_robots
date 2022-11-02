@@ -33,7 +33,7 @@ def macd_condition(data):
     })
 
     df = pd.concat([df, subtractions, signs], axis=1)
-    df.to_csv(f'D:/PRIMARY/Desktop/УИР/Торговые роботы/testing strategy/{data[1]}/{data[1]}_macd_condition',
+    df.to_csv(f'D:/PRIMARY/Desktop/УИР/Торговые роботы/testing strategy/{data[1]}/{data[1]}_macd_condition.csv',
               index=False)
 
 
