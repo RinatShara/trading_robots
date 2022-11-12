@@ -1,13 +1,22 @@
 import pandas as pd
 import pandas_ta as pd_ta
 
-df_candles = pd.read_csv('surgut/surgut_candles.csv')
 
-super_trend = pd_ta.supertrend(close=df_candles["Цена закрытия"], high=df_candles['Максимум'],
-                               low=df_candles['Минимум'],
-                               length=10, multiplier=1.5)
-super_trend = pd.DataFrame({'SuperTrend': super_trend['SUPERT_10_1.5'], 'Цвет': super_trend['SUPERTd_10_1.5']})
-super_trend.to_csv('surgut/surgut_super_trend.csv', index=False)
+def get_supertrend(name):
+    df_candles = pd.read_csv(f'{name}/{name}_candles.csv')
+
+    super_trend = pd_ta.supertrend(close=df_candles["Цена закрытия"], high=df_candles['Максимум'],
+                                   low=df_candles['Минимум'],
+                                   length=10, multiplier=1.5)
+    super_trend = pd.DataFrame({'Время': df_candles['Время'],
+                                'SuperTrend': super_trend['SUPERT_10_1.5'],
+                                'Цвет': super_trend['SUPERTd_10_1.5']})
+    super_trend.to_csv(f'{name}/{name}_supertrend.csv', index=False)
+
+
+get_supertrend('lukoil')
+get_supertrend('rusal')
+get_supertrend('surgut')
 
 # import csv
 # import pandas as pd
