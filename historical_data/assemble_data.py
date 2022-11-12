@@ -10,8 +10,9 @@ from datetime import datetime, timezone, timedelta
 
 
 class HistoricalData:
-    def __init__(self, figi):
-        self.figi = figi  # Мы получаем только figi и с ними работаем
+    def __init__(self, data):
+        self.figi = data[0]  # figi инструмента
+        self.way = data[1]  # Имя папки, куда сохраняем данные
         self.instruments = {}  # Это словарь кэша, в котором будет хранится информация из функции add_active
         self.df = pd.DataFrame([])  # Это финальный DataFrame, который в конце преобразуется в csv файл
 
@@ -49,27 +50,31 @@ class HistoricalData:
         with Client(ro_token) as client:
             df = pd.DataFrame([])  # Финальный DataFrame со свечами
             today = datetime(2022, 10, 22)  # Конечная дата будет 22 октября 2022 года
-
+            # Получаем свечи за определённый день (больше одного дня с 15 минутным интервалом брать нельзя)
             for i in range(2, -1, -1):  # Обходим лимитную политику в 300 дней
                 for day in range(299, -1, -1):  # Получаем значения за 300 дней
-                    # Получаем свечи за определённый день (больше одного дня с 15 минутным интервалом брать нельзя)
-                    # Интервал 15 минут, но берём каждую вторую свечу и получаем тем самым 30-минутные свечи
                     candles = client.market_data.get_candles(figi=self.figi,
                                                              from_=today - timedelta(days=day + 300 * i + 1),
                                                              to=today - timedelta(days=day + 300 * i),
-                                                             interval=3).candles[::2]
+                                                             interval=3).candles  # Получаем все свечи
+                    candles_left = candles[::2]  # Берём каждую "левую" свечу
+                    candles_right = candles[1::2]  # Берём каждую "правую" свечу
+                    candles = list(zip(candles_left, candles_right))  # Компунем каждую "левую" свечу с "правой"
                     # Создаём DataFrame с определёнными значениями свечи
                     df1 = pd.DataFrame([{'Название': self.get_name(self.figi),
                                          'Валюта': self.get_currency(self.figi),
-                                         'Время': self.convert_time(item.time),
-                                         'Цена открытия': self.convert_money(item.open),
-                                         'Цена закрытия': self.convert_money(item.close),
-                                         'Минимум': self.convert_money(item.low),
-                                         'Максимум': self.convert_money(item.high)} for item in candles])
+                                         'Время': self.convert_time(item[0].time),
+                                         'Цена открытия': self.convert_money(item[0].open),
+                                         'Цена закрытия': self.convert_money(item[1].close),
+                                         'Минимум': min(self.convert_money(item[0].low),
+                                                        self.convert_money(item[1].low)),
+                                         'Максимум': max(self.convert_money(item[0].high),
+                                                         self.convert_money(item[1].high))}
+                                        for item in candles])
                     df = pd.concat([df, df1], axis=0)  # Дополняем значения df значениями df1
                 sleep(45.0)  # Обход лимитной политики
 
-            self.df = pd.concat([self.df, df], axis=1)  # Добавляем в самый главный DF наши исторические свечи
+        self.df = pd.concat([self.df, df], axis=1)  # Добавляем в самый главный DF наши исторические свечи
 
     def get_atr(self):  # Функция получения ATR
         atr = average_true_range(high=self.df['Максимум'], low=self.df['Минимум'],
@@ -109,15 +114,17 @@ class HistoricalData:
         self.get_macd()
         self.get_super_trend()
 
-        name = self.get_name(self.figi)  # Имя итогового csv файла будет совпадать с именем акции
-        self.df.to_csv(f'data/{name.lower()}_data.csv', index=False)  # Сохраняем итоговый DF в csv файл
+        self.df.to_csv(f'data/{self.way}_data.csv', index=False)  # Сохраняем итоговый DF в csv файл
 
 
-lukoil = HistoricalData('BBG004731032')
+lukoil_data = 'BBG004731032', 'lukoil'
+lukoil = HistoricalData(lukoil_data)
 lukoil.assemble()
 
-rusal = HistoricalData('BBG008F2T3T2')
+rusal_data = 'BBG008F2T3T2', 'rusal'
+rusal = HistoricalData(rusal_data)
 rusal.assemble()
 
-surgut = HistoricalData('BBG0047315D0')
+surgut_data = 'BBG0047315D0', 'surgut'
+surgut = HistoricalData(surgut_data)
 surgut.assemble()
