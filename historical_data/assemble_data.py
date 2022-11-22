@@ -128,3 +128,7 @@ rusal.assemble()
 surgut_data = 'BBG0047315D0', 'surgut'
 surgut = HistoricalData(surgut_data)
 surgut.assemble()
+
+cinemark_data = 'BBG000QDVR53', 'cinemark'
+cinemark = HistoricalData(cinemark_data)
+cinemark.assemble()

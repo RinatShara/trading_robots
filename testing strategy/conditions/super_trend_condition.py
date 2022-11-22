@@ -1,17 +1,17 @@
 import pandas as pd
 
-lukoil_data = pd.read_csv('D:\PRIMARY\Desktop\УИР\Торговые роботы\historical_data\data\лукойл_data.csv'), 'lukoil'
-rusal_data = pd.read_csv('D:\PRIMARY\Desktop\УИР\Торговые роботы\historical_data\data\русал_data.csv'), 'rusal'
+lukoil_data = pd.read_csv('D:/PRIMARY/Desktop/УИР/Торговые роботы/historical_data/data/lukoil_data.csv'), 'lukoil'
+rusal_data = pd.read_csv('D:/PRIMARY/Desktop/УИР/Торговые роботы/historical_data/data/rusal_data.csv'), 'rusal'
 surgut_data = pd.read_csv(
-    'D:\PRIMARY\Desktop\УИР\Торговые роботы\historical_data\data\сургутнефтегаз_data.csv'), 'surgut'
+    'D:/PRIMARY/Desktop/УИР/Торговые роботы/historical_data/data/surgut_data.csv'), 'surgut'
 
 
 def super_trend_condition(data):
-    colors = []
     df = pd.DataFrame({"Время": data[0]['Время'],
                        "Цена закрытия": data[0]['Цена закрытия'],
                        "SuperTrend": data[0]['SuperTrend']})
 
+    colors = []
     for color in data[0]["Цвет"]:
         if color == 1:
             colors.append('Зелёный')

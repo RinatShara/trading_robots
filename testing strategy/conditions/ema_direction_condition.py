@@ -1,35 +1,23 @@
 import pandas as pd
 
-lukoil_data = open('D:\PRIMARY\Desktop\УИР\Торговые роботы\historical_data\data\лукойл_data.csv',
-                   encoding='utf-8'), 'lukoil'
-rusal_data = open('D:\PRIMARY\Desktop\УИР\Торговые роботы\historical_data\data\русал_data.csv',
-                  encoding='utf-8'), 'rusal'
-surgut_data = open('D:\PRIMARY\Desktop\УИР\Торговые роботы\historical_data\data\сургутнефтегаз_data.csv',
-                   encoding='utf-8'), 'surgut'
+lukoil_data = pd.read_csv('D:/PRIMARY/Desktop/УИР/Торговые роботы/historical_data/data/lukoil_data.csv'), 'lukoil'
+rusal_data = pd.read_csv('D:/PRIMARY/Desktop/УИР/Торговые роботы/historical_data/data/rusal_data.csv'), 'rusal'
+surgut_data = pd.read_csv('D:/PRIMARY/Desktop/УИР/Торговые роботы/historical_data/data/surgut_data.csv'), 'surgut'
 
 
-def direction_ema_condition(data):
-    df = pd.read_csv(data[0])
-    df = pd.DataFrame({'Время': df['Время'],
-                       'Цена закрытия': df['Цена закрытия'],
-                       'EMA': df['EMA']})
+def direction_ema_condition(data, delta):
+    df = pd.DataFrame({'Время': data[0]['Время'],
+                       'Цена закрытия': data[0]['Цена закрытия'],
+                       'EMA': data[0]['EMA']})
 
-    directions = [''] * 399
+    directions = [''] * (199 + delta)
 
-    for i in range(399, len(df['EMA'])):
-        great_values = 0
-        lower_values = 0
-        current_value = df['EMA'].values[i]
+    for i in range(199 + delta, len(df['EMA'])):
+        delta_y = df['EMA'].values[i] - df['EMA'].values[i - delta]
 
-        for previous_value in df['EMA'][i - 200: i + 1]:
-            if previous_value >= current_value:
-                great_values += 1
-            if previous_value < current_value:
-                lower_values += 1
-
-        if lower_values >= great_values:
+        if delta_y >= 0:
             directions.append('Вверх')
-        if lower_values < great_values:
+        else:
             directions.append('Вниз')
 
     df1 = pd.DataFrame({'Направление': directions})
@@ -40,6 +28,6 @@ def direction_ema_condition(data):
         index=False)
 
 
-direction_ema_condition(lukoil_data)
-direction_ema_condition(rusal_data)
-direction_ema_condition(surgut_data)
+direction_ema_condition(lukoil_data, 1)
+direction_ema_condition(rusal_data, 1)
+direction_ema_condition(surgut_data, 1)
