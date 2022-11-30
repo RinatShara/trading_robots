@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CertainResultWindow</class>
+ <widget class="QMainWindow" name="CertainResultWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>892</width>
+    <height>571</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Cash Counter</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../Icons/app_icon.png</normaloff>../../../Icons/app_icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="bg4_label">
+    <property name="geometry">
+     <rect>
+      <x>-30</x>
+      <y>-12</y>
+      <width>931</width>
+      <height>611</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.539773 rgba(119, 67, 219, 255), stop:0.596591 rgba(119, 105, 219, 255));
+/*background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.534091 rgba(119, 67, 219, 255), stop:0.573864 rgba(119, 105, 219, 255));*/
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.477273 rgba(119, 67, 219, 255), stop:0.528409 rgba(119, 105, 219, 255));
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.505682 rgba(119, 67, 219, 255), stop:0.5625 rgba(119, 105, 219, 255));</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Icons/long_icon.png</pixmap>
+    </property>
+    <property name="indent">
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="long_icon">
+    <property name="geometry">
+     <rect>
+      <x>93</x>
+      <y>250</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Icons/long_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="profit_icon">
+    <property name="geometry">
+     <rect>
+      <x>93</x>
+      <y>447</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Icons/profit_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="take_prof_icon">
+    <property name="geometry">
+     <rect>
+      <x>93</x>
+      <y>330</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Icons/take_profit_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="stop_icon">
+    <property name="geometry">
+     <rect>
+      <x>93</x>
+      <y>370</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Icons/loss_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="short_icon">
+    <property name="geometry">
+     <rect>
+      <x>93</x>
+      <y>290</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Icons/short_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="money_icon">
+    <property name="geometry">
+     <rect>
+      <x>93</x>
+      <y>414</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Icons/cash_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="long_label">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>248</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>Количество long-сделок</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="short_label">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>288</y>
+      <width>251</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>Количество short-сделок</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="money_label">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>408</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>Вложенные средства</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="profit_label">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>448</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>Прибыль</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="take_prof_label">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>328</y>
+      <width>311</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>Количество сделок с &quot;плюсом&quot;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="stop_label">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>368</y>
+      <width>311</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>Количество сделок с &quot;минусом&quot;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="long_info">
+    <property name="geometry">
+     <rect>
+      <x>596</x>
+      <y>250</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+border: 2px solid #5DA7DB;
+text-align: center;
+border-radius: 8px;</string>
+    </property>
+    <property name="text">
+     <string>54</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="short_info">
+    <property name="geometry">
+     <rect>
+      <x>596</x>
+      <y>290</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+border: 2px solid #5DA7DB;
+text-align: center;
+border-radius: 8px;</string>
+    </property>
+    <property name="text">
+     <string>42</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="take_prof_info">
+    <property name="geometry">
+     <rect>
+      <x>596</x>
+      <y>330</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+border: 2px solid #5DA7DB;
+text-align: center;
+border-radius: 8px;</string>
+    </property>
+    <property name="text">
+     <string>79</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="stop_info">
+    <property name="geometry">
+     <rect>
+      <x>596</x>
+      <y>370</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+border: 2px solid #5DA7DB;
+text-align: center;
+border-radius: 8px;</string>
+    </property>
+    <property name="text">
+     <string>17</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="money_info">
+    <property name="geometry">
+     <rect>
+      <x>596</x>
+      <y>410</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+border: 2px solid #5DA7DB;
+text-align: center;
+border-radius: 8px;</string>
+    </property>
+    <property name="text">
+     <string>100000</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="profit_info">
+    <property name="geometry">
+     <rect>
+      <x>596</x>
+      <y>450</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>15</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+border: 2px solid #5DA7DB;
+text-align: center;
+border-radius: 8px;</string>
+    </property>
+    <property name="text">
+     <string>110000</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="return_btn">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>500</y>
+      <width>191</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="toolTip">
+     <string>На главный экран</string>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #6C4AB6;
+	color: white;
+	border-radius: 10px;
+}
+
+:hover{
+	background-color: #FF1E6D;
+}
+
+:disabled{
+	color: rgba(255, 255, 255, 100);
+	background-color: #67207D;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Вернуться</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../../../Icons/return_icon.png</normaloff>../../../Icons/return_icon.png</iconset>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="save_btn">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>500</y>
+      <width>241</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="toolTip">
+     <string>Сохранить в историю</string>
+    </property>
+    <property name="toolTipDuration">
+     <number>-3</number>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #6C4AB6;
+	color: white;
+	border-radius: 10px;
+}
+
+:hover{
+	background-color: #00FFAE;
+}
+
+:disabled{
+	color: rgba(255, 255, 255, 100);
+	background-color: #67207D;
+}
+
+</string>
+    </property>
+    <property name="text">
+     <string>Сохранить результат</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="detailed_table">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>851</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTableWidget{
+	background-color: transparent;
+	border: 2px solid white;
+	color: white;
+}
+
+QTableWidget::item {
+	border: 2px solid white;
+}
+
+QHeaderView::section {
+	font-size: 14px;
+	font-weight: 700;
+	background-color: #6C4AB6;
+	border: 3px solid white;
+	color: white;
+}
+
+QScrollBar:vertical {
+	width: 10px;
+    background-color: white;
+}
+
+QScrollBar::handle:vertical {
+	margin-left: 2px;
+	border: none;
+    background-color: #6C4AB6;
+    width: 10px;
+	min-height: 20px;
+	max-height: 40px;
+}
+
+QScrollBar::add-line:vertical {
+    width: 0;
+	height: 0;
+}
+
+QScrollBar::sub-line:vertical {
+    width: 0;
+	height: 0;
+}
+
+</string>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOff</enum>
+    </property>
+    <property name="autoScroll">
+     <bool>true</bool>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="alternatingRowColors">
+     <bool>false</bool>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
+    <property name="showGrid">
+     <bool>false</bool>
+    </property>
+    <property name="gridStyle">
+     <enum>Qt::NoPen</enum>
+    </property>
+    <property name="sortingEnabled">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+    <property name="columnCount">
+     <number>7</number>
+    </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>Время</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Тип сделки</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Цена акции</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Take-profit</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Stop-loss</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Количество акций</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Сумма сделки</string>
+     </property>
+    </column>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

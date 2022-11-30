@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ChooseModeWindow</class>
+ <widget class="QMainWindow" name="ChooseModeWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>309</width>
+    <height>469</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Cash Counter</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../../../Icons/app_icon.png</normaloff>../../../Icons/app_icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="bg1_label">
+    <property name="geometry">
+     <rect>
+      <x>-4</x>
+      <y>-10</y>
+      <width>321</width>
+      <height>611</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:  #7743DB;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="indent">
+     <number>2</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="choose_label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>161</y>
+      <width>251</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>Выберите режим запуска </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="euro_icon">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>78</y>
+      <width>31</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Icons/euro_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="sand_btn">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>308</y>
+      <width>291</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #8D72E1;
+	color: white;
+	border-radius: 10px;
+}
+
+:hover{
+	background-color: #8D9EFF;
+}
+
+:disabled{
+	color: rgba(255, 255, 255, 100);
+	background-color: #6C27B6;
+}
+
+</string>
+    </property>
+    <property name="text">
+     <string>Торговля в &quot;песочнице&quot;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="current_time">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>28</y>
+      <width>61</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>22:34</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="calen_icon">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>28</y>
+      <width>31</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Icons/calen_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="current_date">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>28</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>23.11.2022</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="dollar_icon">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>78</y>
+      <width>31</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Icons/dollar_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="dollar_price">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>78</y>
+      <width>71</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>60.26</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="test_btn">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>228</y>
+      <width>291</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #8D72E1;
+	color: white;
+	border-radius: 10px;
+}
+
+:hover{
+	background-color: #8D9EFF;
+}
+
+:disabled{
+	color: rgba(255, 255, 255, 100);
+	background-color: #67207D;
+}
+
+</string>
+    </property>
+    <property name="text">
+     <string>Тестирование стратегий</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="clock_icon">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>28</y>
+      <width>31</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../Icons/clock_icon.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="euro_price">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>78</y>
+      <width>51</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>70.51</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="real_btn">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>388</y>
+      <width>291</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	background-color: #8D72E1;
+	color: white;
+	border-radius: 10px;
+}
+
+:hover{
+	background-color: #8D9EFF;
+}
+
+:disabled{
+	color: rgba(255, 255, 255, 100);
+	background-color: #6C27B6;
+}
+
+</string>
+    </property>
+    <property name="text">
+     <string>Торговля на реальном рынке</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
