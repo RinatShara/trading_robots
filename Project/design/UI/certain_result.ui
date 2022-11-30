@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CertainResult</class>
- <widget class="QMainWindow" name="CertainResult">
+ <class>CertainResultWindow</class>
+ <widget class="QMainWindow" name="CertainResultWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>740</width>
+    <width>892</width>
     <height>571</height>
    </rect>
   </property>
@@ -23,13 +23,15 @@
      <rect>
       <x>-30</x>
       <y>-12</y>
-      <width>811</width>
+      <width>931</width>
       <height>611</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.539773 rgba(119, 67, 219, 255), stop:0.596591 rgba(119, 105, 219, 255));
-/*background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.534091 rgba(119, 67, 219, 255), stop:0.573864 rgba(119, 105, 219, 255));*/</string>
+/*background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.534091 rgba(119, 67, 219, 255), stop:0.573864 rgba(119, 105, 219, 255));*/
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.477273 rgba(119, 67, 219, 255), stop:0.528409 rgba(119, 105, 219, 255));
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.505682 rgba(119, 67, 219, 255), stop:0.5625 rgba(119, 105, 219, 255));</string>
     </property>
     <property name="text">
      <string/>
@@ -44,8 +46,8 @@
    <widget class="QLabel" name="long_icon">
     <property name="geometry">
      <rect>
-      <x>33</x>
-      <y>240</y>
+      <x>93</x>
+      <y>250</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -60,8 +62,8 @@
    <widget class="QLabel" name="profit_icon">
     <property name="geometry">
      <rect>
-      <x>33</x>
-      <y>437</y>
+      <x>93</x>
+      <y>447</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -76,8 +78,8 @@
    <widget class="QLabel" name="take_prof_icon">
     <property name="geometry">
      <rect>
-      <x>33</x>
-      <y>320</y>
+      <x>93</x>
+      <y>330</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -92,8 +94,8 @@
    <widget class="QLabel" name="stop_icon">
     <property name="geometry">
      <rect>
-      <x>33</x>
-      <y>360</y>
+      <x>93</x>
+      <y>370</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -108,8 +110,8 @@
    <widget class="QLabel" name="short_icon">
     <property name="geometry">
      <rect>
-      <x>33</x>
-      <y>280</y>
+      <x>93</x>
+      <y>290</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -124,8 +126,8 @@
    <widget class="QLabel" name="money_icon">
     <property name="geometry">
      <rect>
-      <x>33</x>
-      <y>404</y>
+      <x>93</x>
+      <y>414</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -140,8 +142,8 @@
    <widget class="QLabel" name="long_label">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>238</y>
+      <x>150</x>
+      <y>248</y>
       <width>241</width>
       <height>31</height>
      </rect>
@@ -162,8 +164,8 @@
    <widget class="QLabel" name="short_label">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>278</y>
+      <x>150</x>
+      <y>288</y>
       <width>251</width>
       <height>31</height>
      </rect>
@@ -184,8 +186,8 @@
    <widget class="QLabel" name="money_label">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>398</y>
+      <x>150</x>
+      <y>408</y>
       <width>211</width>
       <height>31</height>
      </rect>
@@ -206,8 +208,8 @@
    <widget class="QLabel" name="profit_label">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>438</y>
+      <x>150</x>
+      <y>448</y>
       <width>91</width>
       <height>31</height>
      </rect>
@@ -228,8 +230,8 @@
    <widget class="QLabel" name="take_prof_label">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>318</y>
+      <x>150</x>
+      <y>328</y>
       <width>311</width>
       <height>31</height>
      </rect>
@@ -250,8 +252,8 @@
    <widget class="QLabel" name="stop_label">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>358</y>
+      <x>150</x>
+      <y>368</y>
       <width>311</width>
       <height>31</height>
      </rect>
@@ -272,8 +274,8 @@
    <widget class="QLabel" name="long_info">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>240</y>
+      <x>596</x>
+      <y>250</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -300,8 +302,8 @@ border-radius: 8px;</string>
    <widget class="QLabel" name="short_info">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>280</y>
+      <x>596</x>
+      <y>290</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -328,8 +330,8 @@ border-radius: 8px;</string>
    <widget class="QLabel" name="take_prof_info">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>320</y>
+      <x>596</x>
+      <y>330</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -356,8 +358,8 @@ border-radius: 8px;</string>
    <widget class="QLabel" name="stop_info">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>360</y>
+      <x>596</x>
+      <y>370</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -384,8 +386,8 @@ border-radius: 8px;</string>
    <widget class="QLabel" name="money_info">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>400</y>
+      <x>596</x>
+      <y>410</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -412,8 +414,8 @@ border-radius: 8px;</string>
    <widget class="QLabel" name="profit_info">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>440</y>
+      <x>596</x>
+      <y>450</y>
       <width>181</width>
       <height>31</height>
      </rect>
@@ -443,8 +445,8 @@ border-radius: 8px;</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>169</x>
-      <y>490</y>
+      <x>250</x>
+      <y>500</y>
       <width>191</width>
       <height>51</height>
      </rect>
@@ -498,9 +500,9 @@ border-radius: 8px;</string>
     </property>
     <property name="geometry">
      <rect>
-      <x>379</x>
-      <y>490</y>
-      <width>201</width>
+      <x>470</x>
+      <y>500</y>
+      <width>241</width>
       <height>51</height>
      </rect>
     </property>
@@ -541,22 +543,19 @@ border-radius: 8px;</string>
 </string>
     </property>
     <property name="text">
-     <string>Сохранить</string>
+     <string>Сохранить результат</string>
     </property>
     <property name="checkable">
      <bool>false</bool>
     </property>
    </widget>
    <widget class="QTableWidget" name="detailed_table">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>701</width>
-      <height>211</height>
+      <width>851</width>
+      <height>221</height>
      </rect>
     </property>
     <property name="font">
@@ -576,17 +575,48 @@ border-radius: 8px;</string>
 	background-color: transparent;
 	border: 2px solid white;
 	color: white;
-	border-color: rgb(255, 255, 255);
 }
 
 QTableWidget::item {
-	text-align: center;
 	border: 2px solid white;
 }
 
-QTableWidget::horizontal_header {
-	background-color: red;
-}</string>
+QHeaderView::section {
+	font-size: 14px;
+	font-weight: 700;
+	background-color: #6C4AB6;
+	border: 3px solid white;
+	color: white;
+}
+
+QScrollBar:vertical {
+	width: 10px;
+    background-color: white;
+}
+
+QScrollBar::handle:vertical {
+	margin-left: 2px;
+	border: none;
+    background-color: #6C4AB6;
+    width: 10px;
+	min-height: 20px;
+	max-height: 40px;
+}
+
+QScrollBar::add-line:vertical {
+    width: 0;
+	height: 0;
+}
+
+QScrollBar::sub-line:vertical {
+    width: 0;
+	height: 0;
+}
+
+</string>
+    </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
     </property>
     <property name="horizontalScrollBarPolicy">
      <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -594,8 +624,8 @@ QTableWidget::horizontal_header {
     <property name="autoScroll">
      <bool>true</bool>
     </property>
-    <property name="dragEnabled">
-     <bool>false</bool>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
     </property>
     <property name="alternatingRowColors">
      <bool>false</bool>
@@ -612,16 +642,13 @@ QTableWidget::horizontal_header {
     <property name="sortingEnabled">
      <bool>true</bool>
     </property>
-    <property name="rowCount">
-     <number>2</number>
+    <property name="wordWrap">
+     <bool>false</bool>
     </property>
     <property name="columnCount">
      <number>7</number>
     </property>
     <attribute name="horizontalHeaderVisible">
-     <bool>false</bool>
-    </attribute>
-    <attribute name="horizontalHeaderHighlightSections">
      <bool>true</bool>
     </attribute>
     <attribute name="verticalHeaderVisible">
@@ -630,8 +657,6 @@ QTableWidget::horizontal_header {
     <attribute name="verticalHeaderStretchLastSection">
      <bool>false</bool>
     </attribute>
-    <row/>
-    <row/>
     <column>
      <property name="text">
       <string>Время</string>
@@ -644,12 +669,7 @@ QTableWidget::horizontal_header {
     </column>
     <column>
      <property name="text">
-      <string>Цена</string>
-     </property>
-    </column>
-    <column>
-     <property name="text">
-      <string>Stop-loss</string>
+      <string>Цена акции</string>
      </property>
     </column>
     <column>
@@ -659,46 +679,20 @@ QTableWidget::horizontal_header {
     </column>
     <column>
      <property name="text">
+      <string>Stop-loss</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
       <string>Количество акций</string>
      </property>
     </column>
     <column>
      <property name="text">
-      <string>Сумма</string>
+      <string>Сумма сделки</string>
      </property>
     </column>
-    <item row="0" column="0">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="textAlignment">
-      <set>AlignCenter</set>
-     </property>
-    </item>
-    <item row="0" column="1">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="textAlignment">
-      <set>AlignCenter</set>
-     </property>
-    </item>
-    <item row="1" column="2">
-     <property name="text">
-      <string/>
-     </property>
-    </item>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>740</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
  </widget>
  <resources/>

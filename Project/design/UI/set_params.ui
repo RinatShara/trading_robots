@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>StrategyParams</class>
- <widget class="QMainWindow" name="StrategyParams">
+ <class>StrategyParamsWindow</class>
+ <widget class="QMainWindow" name="StrategyParamsWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -241,9 +241,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.5 r
    <widget class="QLabel" name="error_label">
     <property name="geometry">
      <rect>
-      <x>245</x>
+      <x>120</x>
       <y>245</y>
-      <width>111</width>
+      <width>371</width>
       <height>41</height>
      </rect>
     </property>
@@ -267,7 +267,7 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.5 r
 }</string>
     </property>
     <property name="text">
-     <string>Ошибка</string>
+     <string>Процент не может быть больше 100</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

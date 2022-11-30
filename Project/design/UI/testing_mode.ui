@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>763</width>
-    <height>469</height>
+    <height>0</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,13 +37,13 @@
      <number>2</number>
     </property>
    </widget>
-   <widget class="QCalendarWidget" name="calendar">
+   <widget class="QCalendarWidget" name="first_calendar">
     <property name="enabled">
      <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
-      <x>420</x>
+      <x>421</x>
       <y>288</y>
       <width>241</width>
       <height>170</height>
@@ -599,9 +599,6 @@ QComboBox QAbstractItemView {
     <property name="text">
      <string>Начать тестирование</string>
     </property>
-    <property name="checkable">
-     <bool>false</bool>
-    </property>
    </widget>
    <widget class="QLabel" name="dollar_price">
     <property name="geometry">
@@ -906,6 +903,98 @@ QComboBox QAbstractItemView {
      <string>Выберите режим запуска </string>
     </property>
    </widget>
+   <widget class="QCalendarWidget" name="second_calendar">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>421</x>
+      <y>288</y>
+      <width>241</width>
+      <height>170</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Comic Sans MS</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#qt_calendar_navigationbar {
+	font-size: 15px;
+	font-weight: 700;
+    background-color: #8D9EFF;
+    min-height: 30px;
+}
+
+#qt_calendar_prevmonth, #qt_calendar_nextmonth {
+	qproperty-icon: none;
+	color: white;
+	font-weight: 700;
+}
+
+#qt_calendar_prevmonth {
+	qproperty-text: &quot;&lt;&quot;;
+}
+
+#qt_calendar_nextmonth {
+	qproperty-text: &quot;&gt;&quot;;
+}
+
+#qt_calendar_prevmonth:hover, #qt_calendar_nextmonth:hover {
+    background-color: rgba(141, 119, 255, 150);
+	border: none;
+}
+
+#qt_calendar_yearbutton, #qt_calendar_monthbutton {
+	width: 90px;
+	margin-right: 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+#qt_calendar_yearbutton:hover, #qt_calendar_monthbutton:hover {
+    background-color: rgba(141, 119, 255, 150);
+}
+
+#qt_calendar_calendarview {
+    outline: 2px solid rgb(0, 188, 212);
+	selection-color: #3C00FF;
+    selection-background-color: transparent;
+}
+</string>
+    </property>
+    <property name="selectedDate">
+     <date>
+      <year>2022</year>
+      <month>11</month>
+      <day>23</day>
+     </date>
+    </property>
+    <property name="gridVisible">
+     <bool>false</bool>
+    </property>
+    <property name="selectionMode">
+     <enum>QCalendarWidget::SingleSelection</enum>
+    </property>
+    <property name="horizontalHeaderFormat">
+     <enum>QCalendarWidget::ShortDayNames</enum>
+    </property>
+    <property name="verticalHeaderFormat">
+     <enum>QCalendarWidget::NoVerticalHeader</enum>
+    </property>
+    <property name="navigationBarVisible">
+     <bool>true</bool>
+    </property>
+    <property name="dateEditEnabled">
+     <bool>true</bool>
+    </property>
+   </widget>
    <zorder>bg2_label</zorder>
    <zorder>reset_btn</zorder>
    <zorder>set_param_btn</zorder>
@@ -929,7 +1018,8 @@ QComboBox QAbstractItemView {
    <zorder>current_time</zorder>
    <zorder>dollar_icon</zorder>
    <zorder>choose_label</zorder>
-   <zorder>calendar</zorder>
+   <zorder>second_calendar</zorder>
+   <zorder>first_calendar</zorder>
   </widget>
  </widget>
  <resources/>
