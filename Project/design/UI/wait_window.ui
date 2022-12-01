@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Cash Counter</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Icons/app_icon.png</normaloff>../Icons/app_icon.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">background-color:  rgb(119, 67, 219);</string>
   </property>
