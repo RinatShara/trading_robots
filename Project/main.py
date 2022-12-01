@@ -1,9 +1,11 @@
+import os
 import sqlite3
 import sys
 import pandas as pd
 
 from datetime import datetime
 
+from PyQt5 import QtGui
 from PyQt5.QtCore import Qt, QTimer, QTime
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QCompleter, QWidget, QLabel
@@ -20,13 +22,19 @@ from tokens import ro_token
 from testing import Testing
 from data_base.save_result import SavingResult
 
+icons_way = os.getcwd()
+
 
 class LoadWindow(QWidget):
     def __init__(self):
         super(LoadWindow, self).__init__()
         self.setFixedSize(545, 346)
         self.logo = QLabel(self)
-        self.logo.setPixmap(QPixmap('D:/PRIMARY/Desktop/УИР/Торговые роботы/Project/design/Icons/logo.png'))
+        self.logo.setPixmap(QPixmap(f'{icons_way}/design/Icons/logo.png'))
+
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(f"{icons_way}/design/Icons/app_icon.png"))
+        LoadWindow.setWindowIcon(self, icon)
 
         timer = QTimer(self)
         timer.singleShot(5000, self.open_choose_mode)
