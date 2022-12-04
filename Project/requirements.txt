@@ -1,0 +1,7 @@
+numpy==1.22.4
+pandas==1.4.2
+pandas_ta==0.3.14b0
+PyQt5==5.15.7
+ta==0.10.1
+tinkoff==0.1.1
+tokens==0.0.3
