@@ -44,7 +44,7 @@ class SavingResult:
     def check_repeat(self):  # Проверка на повторное тестирование по тем же данным
         all_data = self.cur.execute('''SELECT * FROM gen_tests''').fetchall()
         for row in all_data:
-            if self.gen_params[1:] == row[1:] or not all(self.gen_params):
+            if self.gen_params[1:] == row[1:] or not all(self.gen_params):  # Проверка на повторение данных + наличиние
                 return False
         return True
 
