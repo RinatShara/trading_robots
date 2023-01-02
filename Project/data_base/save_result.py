@@ -1,9 +1,10 @@
 import sqlite3
+from os import getcwd
 
 
 class SavingResult:
     def __init__(self, gen_prams, det_params, info):
-        self.connection = sqlite3.connect('data_base/history_results.db')
+        self.connection = sqlite3.connect(f'{getcwd()}/data_base/history_results.db')
         self.cur = self.connection.cursor()
         self.create_tables()  # Вызываем функцию по созданию таблиц
 

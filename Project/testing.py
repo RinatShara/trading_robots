@@ -1,5 +1,6 @@
 import pandas as pd
 import sqlite3
+from os import getcwd
 
 from assemble_data import HistoricalData
 from assemble_conditions import Conditions
@@ -26,7 +27,7 @@ class Testing:
 
     def set_testing_params(self, params):  # Определяем оставшиеся параметры для тестирования
         # Получаем figi акции по её имени через БД
-        connection = sqlite3.connect('D:/PRIMARY/Desktop/УИР/Торговые роботы/Project/data_base/shares.db')
+        connection = sqlite3.connect(f'{getcwd()}/data_base/shares.db')
         cur = connection.cursor()
         self.share = list(*cur.execute(f'''SELECT figi FROM shares WHERE name = "{params[1]}"'''))
         connection.close()
