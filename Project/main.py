@@ -27,6 +27,7 @@ from data_base.save_result import SavingResult
 class LoadWindow(QWidget):  # Класс загрузочного окна
     def __init__(self):
         super(LoadWindow, self).__init__()
+        self.setWindowTitle('Cash Counter')
         self.setFixedSize(545, 346)
         self.logo = QLabel(self)
         self.logo.setPixmap(QPixmap(f'{file_way}/design/Icons/logo.png'))
@@ -224,9 +225,13 @@ class TestingWindow(QMainWindow, Ui_TestingWindow):  # Класс окна с р
         parameters[2] = self.first_date_btn.text()
         parameters[3] = self.second_date_btn.text()
 
-        self.hist_tests = HistoryTestsWindow()
-        self.hist_tests.show()
-        self.hide()
+        try:
+            self.hist_tests = HistoryTestsWindow()
+            self.hist_tests.show()
+            self.hide()
+        except sqlite3.OperationalError:
+            self.error_label.setVisible(True)
+            self.error_label.setText('История пустая')
 
     def open_set_params(self):  # Функция, которая открывает окно с дополнительными параметрами
         parameters[0] = self.choose_strat.currentText()
