@@ -38,14 +38,14 @@ class Testing:
         # Задаём оставшиеся параметры
         self.initial_money = float(params[4])
         self.money = float(params[4])  # Будет меняться
-        self.free_money = self.initial_money * float(params[5]) / 100  # params[5] - процент от своб.средств на 1 сделку
+        self.bag_risk = float(params[5])
         self.profit_coeff = float(params[6])
 
-    def testing(self):  # Тестирование стратеги
+    def testing(self):  # Тестирование стратегии
         for i, row in self.conditions.iterrows():  # Пробегаемся по каждой строке в DF с условиями
             # Задаём переменные для дальнейшего пользования
             current_price = row['Цена закрытия']
-            amount = self.free_money // current_price  # Количество акций, с которыми можно торговать
+            amount = (self.bag_risk / 100) * self.money / abs(current_price - row["SuperTrend"])  # Количество акций
             candle = [row['Направление'],
                       row['Выше/Ниже'],
                       row['Пересечение'],
@@ -57,12 +57,12 @@ class Testing:
                 for price_range in self.active_deals:
                     if current_price >= price_range[3]:  # Если цена превысила отметку take-profit
                         self.take_count += 1
-                        self.money += current_price * amount
+                        self.money += current_price * price_range[1]
                         self.active_deals.remove(price_range)
 
                     elif current_price < price_range[2]:  # Если цена стала ниже отметки stop-loss
                         self.stop_count += 1
-                        self.money += current_price * amount
+                        self.money += current_price * price_range[1]
                         self.active_deals.remove(price_range)
 
             # Проверка условий для long-сделки + проверка на наличие денег для совершения сделки
@@ -89,7 +89,7 @@ class Testing:
                 time = f'{str(row["Время"].date().day).rjust(2, "0")}.' \
                        f'{str(row["Время"].date().month).rjust(2, "0")}.{row["Время"].date().year} ' \
                        f'{str(row["Время"].time().hour).rjust(2, "0")}:{str(row["Время"].time().minute).rjust(2, "0")}'
-                take_profit = (row["SuperTrend"] - current_price) * self.profit_coeff + current_price
+                take_profit = current_price - (row["SuperTrend"] - current_price) * self.profit_coeff
                 stop_loss = row["SuperTrend"]
 
                 self.money -= current_price * amount
