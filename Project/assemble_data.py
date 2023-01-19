@@ -49,12 +49,12 @@ class HistoricalData:
         return self.instruments[figi][2]
 
     def get_candles(self):  # Функция получения исторических свечей
-        # Разбиение времени на отрезки по 300 дней + остаток
+        # Разбиение времени на отрезки по 279 дней + остаток
         days = []
-        while self.delta_days // 300 != 0:
-            days.append(300)
-            self.delta_days -= 300
-        days.append(self.delta_days % 300)
+        while self.delta_days // 279 != 0:
+            days.append(279)
+            self.delta_days -= 279
+        days.append(self.delta_days % 279)
 
         with Client(ro_token) as client:
             df = pd.DataFrame([])  # Финальный DataFrame со свечами
@@ -83,8 +83,8 @@ class HistoricalData:
             for i, day in enumerate(days):  # Получаем свечи на каждом промежутке, на который мы разбили период теста
                 for j in range(day):
                     candles = client.market_data.get_candles(figi=self.figi,
-                                                             from_=self.start_date + timedelta(days=j + 300 * i),
-                                                             to=self.start_date + timedelta(days=j + 300 * i + 1),
+                                                             from_=self.start_date + timedelta(days=j + 279 * i),
+                                                             to=self.start_date + timedelta(days=j + 279 * i + 1),
                                                              interval=3).candles  # Получаем все свечи
                     candles_left = candles[::2]  # Берём каждую "левую" свечу
                     candles_right = candles[1::2]  # Берём каждую "правую" свечу
