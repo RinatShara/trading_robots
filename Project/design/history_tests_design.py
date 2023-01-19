@@ -158,7 +158,7 @@ class Ui_HistoryTestsWindow(object):
         item = self.general_table.horizontalHeaderItem(3)
         item.setText(_translate("HistoryTestsWindow", "Свободные средства"))
         item = self.general_table.horizontalHeaderItem(4)
-        item.setText(_translate("HistoryTestsWindow", "% на одну сделку"))
+        item.setText(_translate("HistoryTestsWindow", "% риска портфеля"))
         item = self.general_table.horizontalHeaderItem(5)
         item.setText(_translate("HistoryTestsWindow", "Риск/прибыль"))
         item = self.general_table.horizontalHeaderItem(6)
