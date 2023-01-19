@@ -260,18 +260,18 @@ class StrategyParamsWindow(QMainWindow, Ui_StrategyParamsWindow):  # Класс 
 
     def initial_items(self):
         self.set_money.setText(parameters[4])
-        self.set_deal_money.setText(parameters[5])
+        self.set_bag_risk.setText(parameters[5])
         self.set_risk_profit.setText(parameters[6])
         self.error_label.setVisible(False)
 
     def add_functions(self):  # Функция, отслеживающая нажатие кнопок
         self.set_money.textChanged.connect(self.checking_values)
-        self.set_deal_money.textChanged.connect(self.checking_values)
+        self.set_bag_risk.textChanged.connect(self.checking_values)
         self.set_risk_profit.textChanged.connect(self.checking_values)
 
     def checking_values(self):
         self.money = self.set_money.text().replace(',', '.')
-        self.percent = self.set_deal_money.text().replace(',', '.').replace('%', '')
+        self.percent = self.set_bag_risk.text().replace(',', '.').replace('%', '')
         self.risk_profit = self.set_risk_profit.text().replace(',', '.')
 
         try:
