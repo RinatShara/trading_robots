@@ -40,12 +40,16 @@ class Testing:
         self.money = float(params[4])  # Будет меняться
         self.bag_risk = float(params[5])
         self.profit_coeff = float(params[6])
+        self.historical_data.to_csv('hist.csv')
+        self.conditions.to_csv('cond.csv')
 
     def testing(self):  # Тестирование стратегии
         for i, row in self.conditions.iterrows():  # Пробегаемся по каждой строке в DF с условиями
             # Задаём переменные для дальнейшего пользования
             current_price = row['Цена закрытия']
-            amount = (self.bag_risk / 100) * self.money / abs(current_price - row["SuperTrend"])  # Количество акций
+            amount = (self.bag_risk / 100) * self.money // abs(current_price - row["SuperTrend"])  # Количество акций
+            if self.money < amount * current_price:  # Если денег не хватает на первое кол-во акций, то другой расчёт
+                amount = self.money // current_price
             candle = [row['Направление'],
                       row['Выше/Ниже'],
                       row['Пересечение'],
@@ -54,16 +58,44 @@ class Testing:
 
             # Проверка на наличие активных сделок
             if self.active_deals:
-                for price_range in self.active_deals:
-                    if current_price >= price_range[3]:  # Если цена превысила отметку take-profit
-                        self.take_count += 1
-                        self.money += current_price * price_range[1]
-                        self.active_deals.remove(price_range)
+                for deal_info in self.active_deals:
+                    if 'long' in deal_info:  # Определяем тип сделки
+                        if current_price >= deal_info[3]:  # Если цена достигла отметки take-profit или стала выше
+                            self.take_count += 1
+                            self.money += current_price * deal_info[1]
+                            self.active_deals.remove(deal_info)
+                            print(f'Закрыта long с плюсом: {deal_info[0]}')
 
-                    elif current_price < price_range[2]:  # Если цена стала ниже отметки stop-loss
-                        self.stop_count += 1
-                        self.money += current_price * price_range[1]
-                        self.active_deals.remove(price_range)
+                        elif current_price <= deal_info[2]:  # Если цена достигла отметки stop-loss или стала ниже
+                            self.stop_count += 1
+                            self.money += current_price * deal_info[1]
+                            self.active_deals.remove(deal_info)
+                            print(f'Закрыта long с минусом: {deal_info[0]}')
+
+                    elif 'short' in deal_info:  # Определяем тип сделки
+                        if current_price <= deal_info[3]:  # Если цена достигла отметки take-profit или стала ниже
+                            if self.money - current_price * deal_info[1] < 0:  # Если не получается выкупить всё кол-во
+                                print('yes')
+                                buy_amount = self.money // current_price  # Выкупаем столько, сколько позволяет средств
+                                self.money -= current_price * buy_amount
+                                deal_info[1] -= buy_amount
+                            else:  # Иначе выкупаем всё
+                                print(f'Закрыта short с плюсом: {deal_info[0]}')
+                                self.take_count += 1
+                                self.money -= current_price * deal_info[1]
+                                self.active_deals.remove(deal_info)
+
+                        elif current_price >= deal_info[2]:  # Если цена достигла отметки stop-loss или стала выше
+                            if self.money - current_price * deal_info[1] < 0:  # Если не получается выкупить всё кол-во
+                                print('yes')
+                                buy_amount = self.money // current_price  # Выкупаем столько, сколько позволяет средств
+                                self.money -= current_price * buy_amount
+                                deal_info[1] -= buy_amount
+                            else:  # Иначе выкупаем всё
+                                print(f'Закрыта short с минусом: {deal_info[0]}')
+                                self.stop_count += 1
+                                self.money -= current_price * deal_info[1]
+                                self.active_deals.remove(deal_info)
 
             # Проверка условий для long-сделки + проверка на наличие денег для совершения сделки
             if candle == self.long_condition and (self.money - current_price * amount >= 0):
@@ -76,15 +108,15 @@ class Testing:
                 self.money -= current_price * amount
                 self.long_count += 1
                 # Добавляем сделку в список активных
-                self.active_deals.append([current_price, amount, stop_loss, take_profit])
+                self.active_deals.append([current_price, amount, stop_loss, take_profit, 'long'])
                 # Добавляем информацию по сделке для дальнейшего отображения
                 self.long_results.append([time, 'LONG', current_price,
                                           round(take_profit, 2), round(stop_loss, 2), int(amount),
                                           round(current_price * amount, 2)])
                 self.short_results.append('')  # Выравнивание длин
 
-            # Проверка условий для short-сделки + проверка на наличие денег для совершения сделки
-            elif candle == self.short_condition and (self.money - current_price * amount >= 0):
+            # Проверка условий для short-сделки
+            elif candle == self.short_condition:
                 # Задаём время совершения сделки, take-profit и stop-loss
                 time = f'{str(row["Время"].date().day).rjust(2, "0")}.' \
                        f'{str(row["Время"].date().month).rjust(2, "0")}.{row["Время"].date().year} ' \
@@ -92,10 +124,10 @@ class Testing:
                 take_profit = current_price - (row["SuperTrend"] - current_price) * self.profit_coeff
                 stop_loss = row["SuperTrend"]
 
-                self.money -= current_price * amount
+                self.money += current_price * amount
                 self.short_count += 1
                 # Добавляем сделку в список активных
-                self.active_deals.append([current_price, amount, stop_loss, take_profit])
+                self.active_deals.append([current_price, amount, stop_loss, take_profit, 'short'])
                 # Добавляем информацию по сделке для дальнейшего отображения
                 self.short_results.append([time, 'SHORT', current_price,
                                            round(take_profit, 2), round(stop_loss, 2), int(amount),
