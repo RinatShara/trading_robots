@@ -40,8 +40,6 @@ class Testing:
         self.money = float(params[4])  # Будет меняться
         self.bag_risk = float(params[5])
         self.profit_coeff = float(params[6])
-        self.historical_data.to_csv('hist.csv')
-        self.conditions.to_csv('cond.csv')
 
     def testing(self):  # Тестирование стратегии
         for i, row in self.conditions.iterrows():  # Пробегаемся по каждой строке в DF с условиями
@@ -64,35 +62,29 @@ class Testing:
                             self.take_count += 1
                             self.money += current_price * deal_info[1]
                             self.active_deals.remove(deal_info)
-                            print(f'Закрыта long с плюсом: {deal_info[0]}')
 
                         elif current_price <= deal_info[2]:  # Если цена достигла отметки stop-loss или стала ниже
                             self.stop_count += 1
                             self.money += current_price * deal_info[1]
                             self.active_deals.remove(deal_info)
-                            print(f'Закрыта long с минусом: {deal_info[0]}')
 
                     elif 'short' in deal_info:  # Определяем тип сделки
                         if current_price <= deal_info[3]:  # Если цена достигла отметки take-profit или стала ниже
                             if self.money - current_price * deal_info[1] < 0:  # Если не получается выкупить всё кол-во
-                                print('yes')
                                 buy_amount = self.money // current_price  # Выкупаем столько, сколько позволяет средств
                                 self.money -= current_price * buy_amount
                                 deal_info[1] -= buy_amount
                             else:  # Иначе выкупаем всё
-                                print(f'Закрыта short с плюсом: {deal_info[0]}')
                                 self.take_count += 1
                                 self.money -= current_price * deal_info[1]
                                 self.active_deals.remove(deal_info)
 
                         elif current_price >= deal_info[2]:  # Если цена достигла отметки stop-loss или стала выше
                             if self.money - current_price * deal_info[1] < 0:  # Если не получается выкупить всё кол-во
-                                print('yes')
                                 buy_amount = self.money // current_price  # Выкупаем столько, сколько позволяет средств
                                 self.money -= current_price * buy_amount
                                 deal_info[1] -= buy_amount
                             else:  # Иначе выкупаем всё
-                                print(f'Закрыта short с минусом: {deal_info[0]}')
                                 self.stop_count += 1
                                 self.money -= current_price * deal_info[1]
                                 self.active_deals.remove(deal_info)
