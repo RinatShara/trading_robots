@@ -4,7 +4,7 @@ import pandas_ta as pd_ta
 from ta.volatility import average_true_range
 from ta.trend import ema_indicator, MACD
 from tinkoff.invest import Client
-from tokens import ro_token
+from env_settings import RO_TOKEN
 from time import sleep
 from datetime import datetime, timezone, timedelta
 
@@ -28,7 +28,7 @@ class HistoricalData:
         return time
 
     def add_active(self, figi):  # Добавляем в словарь instruments название акции, её валюту и лотность
-        with Client(ro_token) as client:
+        with Client(RO_TOKEN) as client:
             self.instruments[figi] = [client.instruments.get_instrument_by(id_type=1, id=figi).instrument.name,
                                       client.instruments.get_instrument_by(id_type=1, id=figi).instrument.currency,
                                       client.instruments.get_instrument_by(id_type=1, id=figi).instrument.lot]
@@ -56,7 +56,7 @@ class HistoricalData:
             self.delta_days -= 279
         days.append(self.delta_days % 279)
 
-        with Client(ro_token) as client:
+        with Client(RO_TOKEN) as client:
             df = pd.DataFrame([])  # Финальный DataFrame со свечами
             # Получаем первые 10 дней перед стартовой датой, чтобы все значения индикаторов были получены к её началу
             for i in range(20, -1, -1):

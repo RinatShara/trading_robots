@@ -19,7 +19,7 @@ from Project.design.history_tests_design import Ui_HistoryTestsWindow
 from Project.design.set_params_design import Ui_StrategyParamsWindow
 from Project.design.certain_result_design import Ui_CertainResultWindow
 # Импорт вспомогательных файлов
-from tokens import ro_token
+from env_settings import RO_TOKEN
 from testing import Testing
 from data_base.save_result import SavingResult
 
@@ -440,7 +440,7 @@ class CertainResultWindow(QMainWindow, Ui_CertainResultWindow):  # Класс о
 
 if __name__ == '__main__':  # Запуск приложения
     # Получение цены доллара и евро
-    with Client(ro_token) as client:
+    with Client(RO_TOKEN) as client:
         dollar = client.market_data.get_last_prices(figi=['BBG0013HGFT4']).last_prices[0].price
         euro = client.market_data.get_last_prices(figi=['BBG0013HJJ31']).last_prices[0].price
     parameters = ['', '', 'Задать начальную дату', 'Задать конечную дату', '', '', '']  # Список с параметрами стратегии
